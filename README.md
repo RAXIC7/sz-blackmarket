@@ -10,8 +10,8 @@ Also set as many doors as you want.
 # Credit
 
 Credit to oosayeroo for helping with `sz-blackmarket:server:AddItem` and for giving the idea of `Config.PoliceJob`. Check out his scripts
-https://oosayeroo-scripts.tebex.io/
 
+https://oosayeroo-scripts.tebex.io/
 https://github.com/oosayeroo
 
 Any issues, feel free to contact me on Discord - @itsstunz
