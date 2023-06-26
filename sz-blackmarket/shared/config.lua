@@ -8,7 +8,7 @@ Config.CloseHour = 5
 Config.PoliceJob = 'police' -- Name of police job
 
 Config.DoorLocations = {
-    ['1'] = {name = 'PaletoDoor', location = vector3(-121.51, 6204.5, 32.38)}
+    ['1'] = {name = 'PaletoDoor', location = vector3(347.83, -1255.43, 32.7)}
     -- ['2'] = {name = 'Rancho', location = vector3(420.41, -2064.29, 22.14)} -- Add more locations if you want to
 }
 
