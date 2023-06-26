@@ -2,7 +2,7 @@ Simple black market script for QBCore
 
 ## Installation
 
-Drag and drop sz-blackmarket into your resources folder and ensure it in your sfg - Done
+Drag and drop sz-blackmarket into your resources folder and ensure it in your cfg - Done
 
 Check shared/config.lua to add your own items and set your own prices.
 Also set as many doors as you want.
