@@ -116,7 +116,7 @@ RegisterNetEvent('sz-blackmarket:client:OpenMenu', function()
             end)
     elseif clockTime >= Config.CloseHour then
         QBCore.Functions.GetPlayerData(function(PlayerData)
-            if PlayerData.job.name == 'police' then 
+            if PlayerData.job.name == Config.PoliceJob then 
                 QBCore.Functions.Notify('\"You got a warrent?\"', 'error', 3000)
             else
                 QBCore.Functions.Notify('\"I don\'t do business during the day\"')
