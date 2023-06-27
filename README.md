@@ -1,6 +1,10 @@
 Simple black market script for QBCore
 
-## Installation
+# Preview
+
+https://streamable.com/jypifr
+
+# Installation
 
 Drag and drop sz-blackmarket into your resources folder and ensure it in your cfg - Done
 
