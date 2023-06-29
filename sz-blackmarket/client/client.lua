@@ -77,58 +77,64 @@ end)
 RegisterNetEvent('sz-blackmarket:client:OpenMenu', function()
     local clockTime = GetClockHours()
     if Config.Debug then
-        print('Time:', clockTime)
+        print('Current time: ', clockTime)
     end
     if clockTime >= Config.OpenHour and clockTime <= Config.CloseHour - 1 then
             QBCore.Functions.GetPlayerData(function(PlayerData)
-                if PlayerData.job.name == Config.PoliceJob then 
-                    QBCore.Functions.Notify('\"You got a warrent?\"', 'error', 3000)
-                else
-                    QBCore.Functions.Notify('\"Give me a moment\"', 'primary', 3000)
-                    Wait(6000)
-                    QBCore.Functions.Notify('\"Here\'s what I have to offer\"', 'primary', 2000)
-                    Wait(2000)
-   
-                    local itemsList = {}
-                    itemsList[#itemsList + 1] = {
-                        isMenuHeader = true,
-                        header = 'Unknown',
-                        icon = 'fa-solid fa-question'
-                    }
-                    for k,v in pairs(Config.Items) do 
-                        itemsList[#itemsList + 1] = { 
-                            header = v.header,
-                            txt = 'Price: $' .. v.price .. ' | Use: ' .. v.description,
-                            icon = v.icon,
-                            disabled = CheckMoney(v.price),
-                            params = {
-                                event = 'sz-blackmarket:client:PurchaseItem', 
-                                args = {
-                                    item = v.item,
-                                    price = v.price,
-                                    amount = 1,
-                                }
+                for j, job in pairs(Config.BlackListedJobs) do
+                    if PlayerData.job.name == job then 
+                        QBCore.Functions.Notify('\"There is nothing here for you!\"', 'error', 3000)
+                        return
+                    end
+                end
+                QBCore.Functions.Notify('\"Give me a moment\"', 'primary', 3000)
+                Wait(6000)
+                QBCore.Functions.Notify('\"Here\'s what I have to offer\"', 'primary', 2000)
+                Wait(2000)
+
+                local itemsList = {}
+                itemsList[#itemsList + 1] = {
+                    isMenuHeader = true,
+                    header = 'Unknown',
+                    icon = 'fa-solid fa-question'
+                }
+                for k,v in pairs(Config.Items) do 
+                    itemsList[#itemsList + 1] = { 
+                        header = v.header,
+                        txt = 'Price: $' .. v.price .. ' | Use: ' .. v.description,
+                        icon = v.icon,
+                        disabled = CheckMoney(v.price),
+                        params = {
+                            event = 'sz-blackmarket:client:PurchaseItem', 
+                            args = {
+                                item = v.item,
+                                price = v.price,
+                                amount = 1,
                             }
                         }
-                    end
-                    exports['qb-menu']:openMenu(itemsList) 
+                    }
                 end
+                exports['qb-menu']:openMenu(itemsList) 
             end)
     elseif clockTime >= Config.CloseHour and clockTime <= Config.OpenHour then
         QBCore.Functions.GetPlayerData(function(PlayerData)
-            if PlayerData.job.name == Config.PoliceJob then 
-                QBCore.Functions.Notify('\"You got a warrent?\"', 'error', 3000)
-            else
-                QBCore.Functions.Notify('\"I don\'t do business during the day\"')
+            for k, job in pairs(Config.BlackListedJobs) do
+                if PlayerData.job.name == job then 
+                    QBCore.Functions.Notify('\"There is nothing here for you!\"', 'error', 3000)
+                    return
+                end
             end
+            QBCore.Functions.Notify('\"I don\'t do business during the day\"')
         end)
     else
         QBCore.Functions.GetPlayerData(function(PlayerData)
-            if PlayerData.job.name == Config.PoliceJob then 
-                QBCore.Functions.Notify('\"You got a warrent?\"', 'error', 3000)
-            else
-                QBCore.Functions.Notify('\"I don\'t do business during the day\"')
+            for _, job in pairs(Config.BlackListedJobs) do
+                if PlayerData.job.name == job then 
+                    QBCore.Functions.Notify('\"There is nothing here for you!\"', 'error', 3000)
+                    return
+                end
             end
+            QBCore.Functions.Notify('\"I don\'t do business during the day\"')
         end)
     end
 end)
