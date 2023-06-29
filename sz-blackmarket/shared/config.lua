@@ -5,7 +5,10 @@ Config.Debug = false
 Config.OpenHour = 1
 Config.CloseHour = 5 
 
-Config.PoliceJob = 'police' -- Name of police job
+Config.BlackListedJobs = { -- Add jobs you dont want using the black market
+    'police',
+    'ambulance'
+}
 
 Config.DoorLocations = {
     ['1'] = {name = 'PaletoDoor', location = vector3(347.83, -1255.43, 32.7)}
