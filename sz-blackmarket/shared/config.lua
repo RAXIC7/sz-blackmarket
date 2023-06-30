@@ -13,7 +13,7 @@ Config.BlackListedJobs = { -- Add jobs you dont want using the black market
 }
 
 Config.DoorLocations = {
-    ['1'] = {name = 'PaletoDoor', location = vector3(347.83, -1255.43, 32.7)}
+    ['1'] = {name = 'Strawberry', location = vector3(347.83, -1255.43, 32.7)}
     -- ['2'] = {name = 'Rancho', location = vector3(420.41, -2064.29, 22.14)} -- Add more locations if you want to
 }
 
