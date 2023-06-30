@@ -6,7 +6,7 @@ author 'StunZ'
 
 description 'Simple black market script. Easy Config'
 
-version '0.0.1'
+version '0.0.3'
 
 client_scripts {
     'client/client.lua'
